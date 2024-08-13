@@ -18,6 +18,7 @@ class Member extends Model
         'team_id',
         'name',
         'university',
+        'type',
         'major'
     ];
 

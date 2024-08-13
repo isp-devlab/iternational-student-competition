@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('university');
             $table->string('major');
+            $table->enum('type', ['leader', 'member']);
             $table->timestamps();
 
             $table->foreign('team_id')
