@@ -13,12 +13,27 @@ return new class extends Migration
     {
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('assessment_id')->unsigned()->nullable();
+            $table->bigInteger('assessment_id')->unsigned();
+            $table->bigInteger('team_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
+            $table->enum('value', [1,2,3,4,5]);
             $table->timestamps();
+
+            $table->foreign('team_id')
+            ->references('id')
+            ->on('teams')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
             $table->foreign('assessment_id')
             ->references('id')
             ->on('assessments')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });
