@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('team_id')->unsigned();
+            $table->string('content');
             $table->timestamps();
 
             $table->foreign('team_id')
