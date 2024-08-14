@@ -16,24 +16,22 @@
 		<link rel="shortcut icon" href="{{ asset('assets/media/logos/dishub.png') }}" />
     @include('layouts._partials.head')
     @yield('style')
-
 	</head>
 
-	<body id="kt_app_body">
+	<body id="kt_body" class="app-blank">
 		<div class="d-flex flex-column flex-root" id="kt_app_root">
 			<div class="d-flex flex-column flex-lg-row flex-column-fluid">
 
-        @yield('content')
+				@yield('content')
 
-				<div class="d-none d-lg-block d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2" style="background-image: url({{ asset('assets/media/illustrations/auth.png') }})">
-				</div>
+				<div class="d-none d-lg-flex flex-lg-row-fluid w-50 bgi-size-cover bgi-position-y-center bgi-position-x-start bgi-no-repeat" style="background-image: url({{ asset('assets/media/auth/bg11.png') }})"></div>
 			</div>
 		</div>
 
-    @include('layouts._partials.foot')
+    @include('layouts._partials.alert')
+		@include('layouts._partials.foot')
     <!--begin::Vendors Javascript(used for this page only)-->
     @yield('script')
-
 	</body>
 	<!--end::Body-->
 </html>

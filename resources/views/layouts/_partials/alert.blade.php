@@ -9,7 +9,7 @@
 </script>
 <div class="position-fixed bottom-0 end-0 mt-5 me-5" style="z-index: 9999;">
   <div class="toast align-items-center bg-dark" id="success" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
+    <div class="d-flex px-5 py-4">
       <div class="toast-body text-white fs-6">
         {{ session('success') }}
       </div>
@@ -29,7 +29,7 @@
 </script>
 <div class="position-fixed bottom-0 end-0 mt-5 me-5" style="z-index: 9999;">
   <div class="toast align-items-center bg-danger" id="error" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
+    <div class="d-flex px-5 py-4">
       <div class="toast-body text-white fs-6">
         {{ session('error') }}
       </div>

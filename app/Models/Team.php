@@ -19,6 +19,7 @@ class Team extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'logo'
     ];
 
     public function user(): BelongsTo
