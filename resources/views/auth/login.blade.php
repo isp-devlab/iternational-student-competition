@@ -16,7 +16,7 @@
         <div class="card-body">
           <div class="text-start mb-10">
             <h1 class="text-gray-900 mb-3 fs-3x">Sign In</h1>
-            <div class="text-gray-500 fw-semibold fs-6">Enter your credentials to access your account.</div>
+            <div class="text-gray-500 fw-semibold fs-6">Welcome back!, Please enter your detail </div>
           </div>
           <div class="fv-row mb-8">
             <input type="text" placeholder="Email" name="email" autocomplete="off" class="form-control form-control-solid @error('email') is-invalid @enderror" value="{{ old('email') }}" />
@@ -51,8 +51,8 @@
       </form>
     </div>
     <div class="m-0 text-center">
-      <span class="text-gray-500 fw-bold fs-5 me-2" data-kt-translate="sign-up-head-desc">Already a member ?</span>
-      <a href="authentication/layouts/fancy/sign-in.html" class="link-primary fw-bold fs-5" data-kt-translate="sign-up-head-link">Sign In</a>
+      <span class="text-gray-500 fw-bold fs-5 me-2" data-kt-translate="sign-up-head-desc">Don’t have an account ?</span>
+      <a href="{{ route('register') }}" class="link-primary fw-bold fs-5">Sign Up</a>
     </div>
   </div>
 </div>
