@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -68,6 +71,34 @@ class AuthController extends Controller
         Auth::login($user);
     
         return redirect()->route('dashboard')->with('success', 'Congratulation!!, Your account registered successfully and you are now logged in.');
+    }
+
+    public function forgot(){
+        $data = [
+            'title' => 'Forgot Password',
+            'subTitle' => null,
+            'page_id' => null
+        ];
+        return view('auth.forgot',  $data);
+    }
+
+    public function forgotSubmit(Request $request){
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255|exists:users',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('forgot')->withInput()->withErrors($validator);
+        }
+        $token = Uuid::uuid4();
+                DB::table('password_reset_tokens')->insert([
+                    'email' => $request->email, 
+                    'token' => $token, 
+                ]); 
+        Mail::send('email.forgetPassword', ['token' => $token, 'email' => $request->email], function ($message) use ($request) {
+            $message->to($request->email);
+            $message->subject('Reset Password');
+        });
+        return redirect()->route('forgot')->with('success', 'Email sent successfuly, Please check your email for reset password');
     }
     
 }
