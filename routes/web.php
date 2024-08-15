@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,3 +20,12 @@ Route::prefix('/auth')->middleware(['guest'])->group(function () {
     Route::post('/forgot-password/{token}/reset', [AuthController::class, 'resetSubmit'])->name('reset.submit');
 });
 Route::get('/auth/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
+Route::prefix('/user')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('user');
+    Route::post('/', [UserController::class, 'store'])->name('user.store');
+    Route::post('/{id}/update', [UserController::class, 'update'])->name('user.update');
+    Route::get('/{id}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
+});

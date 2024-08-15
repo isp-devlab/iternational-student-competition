@@ -29,7 +29,6 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Jane natan',
             'email' => 'team@example.com',
             'phone_number' => '+628991177229',
             'role' => 'team',

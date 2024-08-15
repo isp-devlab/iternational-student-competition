@@ -12,15 +12,17 @@
     <div class="app-navbar flex-lg-grow-1 pb-5" id="kt_app_header_navbar">
       <div class="app-navbar-item d-flex align-items-stretch flex-lg-grow-1 me-1 me-lg-0">
         <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
-          <h1 class="page-heading d-flex flex-column justify-content-center text-white fw-bold fs-3 m-0">Bidding Dashboard</h1>
+          <h1 class="page-heading d-flex flex-column justify-content-center text-white fw-bold fs-3 m-0">{{ $title }}</h1>
           <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
             <li class="breadcrumb-item text-muted">
-              <a href="index.html" class="text-muted text-hover-primary">Home</a>
+              <a href="index.html" class="text-muted text-hover-primary">{{ $title }}</a>
             </li>
+            @if ( $subTitle )
             <li class="breadcrumb-item">
               <span class="bullet bg-gray-500 w-5px h-2px"></span>
             </li>
-            <li class="breadcrumb-item text-muted">Dashboards</li>
+            <li class="breadcrumb-item text-muted">{{ $subTitle }}</li>
+            @endif
           </ul>
         </div>
       </div>
