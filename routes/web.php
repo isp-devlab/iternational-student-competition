@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -28,4 +29,11 @@ Route::prefix('/user')->group(function () {
     Route::post('/', [UserController::class, 'store'])->name('user.store');
     Route::post('/{id}/update', [UserController::class, 'update'])->name('user.update');
     Route::get('/{id}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
+});
+
+Route::prefix('/announcement')->group(function () {
+    Route::get('/', [AnnouncementController::class, 'index'])->name('announcement');
+    Route::post('/', [AnnouncementController::class, 'store'])->name('announcement.store');
+    Route::post('/{id}/update', [AnnouncementController::class, 'update'])->name('announcement.update');
+    Route::get('/{id}/destroy', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
 });

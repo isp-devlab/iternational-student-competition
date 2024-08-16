@@ -101,8 +101,8 @@
             <span class="menu-arrow"></span>
           </a>
         </div>
-        <div class="menu-item">
-          <a href="" class="menu-link">
+        <div class="menu-item @if($title == 'Announcement') here show @endif">
+          <a href="{{ route('announcement') }}" class="menu-link">
             <span class="menu-icon">
               <i class="ki-outline ki-message-text fs-2"></i>
             </span>
