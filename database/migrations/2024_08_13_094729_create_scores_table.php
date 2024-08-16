@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigInteger('team_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
             $table->enum('value', [1,2,3,4,5]);
+            $table->text('comment')->nullable();
             $table->timestamps();
 
             $table->foreign('team_id')

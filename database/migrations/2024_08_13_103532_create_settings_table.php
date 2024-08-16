@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('competition_name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('logo');
             $table->dateTime('registration_start');
             $table->dateTime('registration_end');
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->dateTime('final_end');
             $table->dateTime('final_announcement');
             $table->enum('submission_type', ['text', 'file']);
-            $table->text('submission_description');
+            $table->text('submission_note')->nullable();
             $table->timestamps();
         });
     }

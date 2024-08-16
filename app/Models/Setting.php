@@ -27,7 +27,7 @@ class Setting extends Model
         'final_end',
         'final_announcement',
         'submission_type',
-        'submission_description'
+        'submission_note'
     ];
 
 }

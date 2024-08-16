@@ -128,8 +128,8 @@
             <span class="menu-arrow"></span>
           </a>
         </div>
-        <div class="menu-item">
-          <a href="" class="menu-link">
+        <div class="menu-item @if($title == 'Setting') here show @endif">
+          <a href="{{ route('setting') }}" class="menu-link">
             <span class="menu-icon">
               <i class="ki-outline ki-gear fs-2">
               </i>

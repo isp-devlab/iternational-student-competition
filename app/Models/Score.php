@@ -20,7 +20,8 @@ class Score extends Model
         'assessment_id',
         'team_id',
         'user_id',
-        'value'
+        'value',
+        'comment'
     ];
 
     public function team(): BelongsTo

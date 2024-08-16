@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SettingController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,4 +37,9 @@ Route::prefix('/announcement')->group(function () {
     Route::post('/', [AnnouncementController::class, 'store'])->name('announcement.store');
     Route::post('/{id}/update', [AnnouncementController::class, 'update'])->name('announcement.update');
     Route::get('/{id}/destroy', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
+});
+
+Route::prefix('/setting')->group(function () {
+    Route::get('/', [SettingController::class, 'index'])->name('setting');
+    Route::post('/', [SettingController::class, 'update'])->name('setting.update');
 });
