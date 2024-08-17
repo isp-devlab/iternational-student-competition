@@ -22,7 +22,6 @@ class AnnouncementController extends Controller
             'page_id' => null,
             'announcement' => $data
         ];
-        // dd($data);
         return view('pages.announcement',  $data);
     }
 
@@ -44,7 +43,6 @@ class AnnouncementController extends Controller
     }
 
     public function update(Request $request, $id){
-        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'content' => 'required',

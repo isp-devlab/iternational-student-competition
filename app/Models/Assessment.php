@@ -14,6 +14,6 @@ class Assessment extends Model
 
     protected $fillable = [
         'content',
-        'category',
+        'type',
     ];
 }

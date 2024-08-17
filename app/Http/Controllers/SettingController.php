@@ -16,7 +16,6 @@ class SettingController extends Controller
             'page_id' => null,
             'setting' => Setting::find(1)
         ];
-        // dd($data);
         return view('pages.setting',  $data);
     }
 

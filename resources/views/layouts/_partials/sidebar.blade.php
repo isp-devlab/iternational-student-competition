@@ -68,9 +68,9 @@
         <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
           <span class="menu-link">
             <span class="menu-icon">
-              <i class="ki-outline ki-scroll fs-2"></i>
+              <i class="ki-outline ki-notepad-edit fs-2"></i>
             </span>
-            <span class="menu-title">Assessment</span>
+            <span class="menu-title">Scoring</span>
             <span class="menu-arrow"></span>
           </span>
           <div class="menu-sub menu-sub-accordion">
@@ -92,14 +92,41 @@
             </div>
           </div>
         </div>
-        <div class="menu-item">
-          <a href="" class="menu-link">
+        <div class="menu-item @if($title == 'Team') here show @endif">
+          <a href="{{ route('team') }}" class="menu-link">
             <span class="menu-icon">
               <i class="ki-outline ki-people fs-2"></i>
             </span>
             <span class="menu-title">Team</span>
             <span class="menu-arrow"></span>
           </a>
+        </div>
+        <div data-kt-menu-trigger="click" class="menu-item @if($title == 'Assessment')  here show @endif menu-accordion">
+          <span class="menu-link">
+            <span class="menu-icon">
+              <i class="ki-outline ki-scroll fs-2"></i>
+            </span>
+            <span class="menu-title">Assessment</span>
+            <span class="menu-arrow"></span>
+          </span>
+          <div class="menu-sub menu-sub-accordion">
+            <div class="menu-item">
+              <a class="menu-link @if($subTitle == 'Qualification') active @endif" href="{{ route('assessment.qualification') }}">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">Qualification</span>
+              </a>
+            </div>
+            <div class="menu-item">
+              <a class="menu-link @if($subTitle == 'Final') active @endif" href="{{ route('assessment.final') }}">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">Final</span>
+              </a>
+            </div>
+          </div>
         </div>
         <div class="menu-item @if($title == 'Announcement') here show @endif">
           <a href="{{ route('announcement') }}" class="menu-link">
