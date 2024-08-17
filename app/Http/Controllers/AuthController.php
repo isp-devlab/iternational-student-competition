@@ -32,6 +32,9 @@ class AuthController extends Controller
         }
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+            if( Auth::user()->role =='team' && Auth::user()->team == null){
+                return redirect()->route('competition.registration');
+            }
             return redirect()->route('dashboard');
         } else {
             return redirect()->route('login')->with('error', 'Username or password are incorrect, please try again');
@@ -70,7 +73,7 @@ class AuthController extends Controller
         // Auto login the user after registration
         Auth::login($user);
     
-        return redirect()->route('dashboard')->with('success', 'Congratulation!!, Your account registered successfully and you are now logged in.');
+        return redirect()->route('competition.registration')->with('success', 'Congratulation!!, Your account registered successfully and you are now logged in.');
     }
 
     public function forgot(){
