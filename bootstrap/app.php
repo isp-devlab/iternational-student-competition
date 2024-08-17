@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\HasntTeam;
 use App\Http\Middleware\HasTeam;
 use App\Http\Middleware\TeamMiddleware;
 use Illuminate\Foundation\Application;
@@ -15,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'hasTeam' => HasTeam::class,
+            'hasntTeam' => HasntTeam::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

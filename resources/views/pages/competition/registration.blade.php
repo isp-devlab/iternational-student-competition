@@ -103,7 +103,7 @@
                         </div>
                         <div class="fv-row mb-3">
                           <label class="form-label required">Phone Number</label>
-                          <input type="text" class="form-control form-control-solid @error('phone') is-invalid @enderror" name="phone" placeholder="" value="{{ old('name') ?? '+62'}}"/>
+                          <input type="text" class="form-control form-control-solid @error('phone') is-invalid @enderror" name="phone" placeholder="" value="{{ old('phone') ?? '+62'}}"/>
                           @error('phone')
                               <div class="invalid-feedback">
                                 {{ $message }}

@@ -61,4 +61,13 @@ class CompetitionController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Your team has been registered successfully');
     }
+
+    public function member(){
+        $data = [
+            'title' => 'Competition',
+            'subTitle' => 'Member',
+            'page_id' => null
+        ];
+        return view('pages.competition.registration',  $data);
+    }
 }

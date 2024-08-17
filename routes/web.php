@@ -28,8 +28,8 @@ Route::get('/auth/logout', [AuthController::class, 'logout'])->name('logout')->m
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth', 'hasTeam']);
 
-Route::get('/competition/registration', [CompetitionController::class, 'registration'])->name('competition.registration')->middleware(['auth']);
-Route::post('/competition/registration', [CompetitionController::class, 'registrationSubmit'])->name('competition.registration.submit')->middleware(['auth']);
+Route::get('/competition/registration', [CompetitionController::class, 'registration'])->name('competition.registration')->middleware(['auth', 'hasntTeam']);
+Route::post('/competition/registration', [CompetitionController::class, 'registrationSubmit'])->name('competition.registration.submit')->middleware(['auth', 'hasntTeam']);
 Route::prefix('/competition')->middleware(['auth', 'hasTeam'])->group(function () {
     Route::get('/member', [CompetitionController::class, 'member'])->name('competition.member');
 });
