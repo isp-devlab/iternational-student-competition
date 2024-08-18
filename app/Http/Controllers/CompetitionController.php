@@ -66,8 +66,80 @@ class CompetitionController extends Controller
         $data = [
             'title' => 'Competition',
             'subTitle' => 'Member',
+            'page_id' => null,
+            'member' => Member::where('team_id', Auth::user()->team->id)->get()
+        ];
+        return view('pages.competition.member',  $data);
+    }
+
+    public function memberStore(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'university' => 'required',
+            'major' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('competition.member')->with('error', 'Validation Error')->withInput()->withErrors($validator);
+        }
+
+        $user = New Member();
+        $user->name = $request->input('name');
+        $user->university = $request->input('university');
+        $user->major = $request->input('major');
+        $user->team_id = Auth::user()->team->id;
+        $user->type = 'member';
+        $user->save();
+        return redirect()->route('competition.member')->with('success','Member has been created successfully'); 
+    }
+
+    public function memberUpdate(Request $request, $id){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'university' => 'required',
+            'major' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('competition.member')->with('error', 'Validation Error')->withInput()->withErrors($validator);
+        }
+
+        $user = Member::findOrFail($id);
+        $user->name = $request->input('name');
+        $user->university = $request->input('university');
+        $user->major = $request->input('major');
+        $user->save();
+        return redirect()->route('competition.member')->with('success','Member has been updated successfully'); 
+    }
+
+    public function memberDestroy($id){
+        $user = Member::findOrFail($id);
+        $user->delete();
+        return redirect()->route('competition.member')->with('success','Member has been deleted successfully'); 
+    }
+
+    public function submission(){
+        $data = [
+            'title' => 'Competition',
+            'subTitle' => 'Submission',
             'page_id' => null
         ];
-        return view('pages.competition.registration',  $data);
+        return view('pages.competition.submission',  $data);
+    }
+
+    public function qualification(){
+        $data = [
+            'title' => 'Competition',
+            'subTitle' => 'Qualification',
+            'page_id' => null
+        ];
+        return view('pages.competition.submission',  $data);
+    }
+
+    public function final(){
+        $data = [
+            'title' => 'Competition',
+            'subTitle' => 'Final',
+            'page_id' => null
+        ];
+        return view('pages.competition.final',  $data);
     }
 }

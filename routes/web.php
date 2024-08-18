@@ -32,6 +32,12 @@ Route::get('/competition/registration', [CompetitionController::class, 'registra
 Route::post('/competition/registration', [CompetitionController::class, 'registrationSubmit'])->name('competition.registration.submit')->middleware(['auth', 'hasntTeam']);
 Route::prefix('/competition')->middleware(['auth', 'hasTeam'])->group(function () {
     Route::get('/member', [CompetitionController::class, 'member'])->name('competition.member');
+    Route::post('/member', [CompetitionController::class, 'memberStore'])->name('competition.member.store');
+    Route::post('/member/{id}/update', [CompetitionController::class, 'memberUpdate'])->name('competition.member.update');
+    Route::get('/member/{id}/destroy', [CompetitionController::class, 'memberDestroy'])->name('competition.member.destroy');
+    Route::get('/submission', [CompetitionController::class, 'submission'])->name('competition.submission');
+    Route::get('/qualification', [CompetitionController::class, 'qualification'])->name('competition.qualification');
+    Route::get('/final', [CompetitionController::class, 'final'])->name('competition.final');
 });
 
 Route::prefix('/user')->middleware(['auth'])->group(function () {

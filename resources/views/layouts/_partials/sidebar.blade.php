@@ -19,10 +19,10 @@
               <i class="ki-outline ki-category fs-2"></i>
             </span>
             <span class="menu-title">Dashboard</span>
-            <span class="menu-arrow"></span>
+            <span class="menu-arrow"></span>  
           </a>
         </div>
-        <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+        <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if($title == 'Competition') here show @endif">
           <span class="menu-link">
             <span class="menu-icon">
               <i class="ki-outline ki-cup fs-2"></i>
@@ -32,7 +32,7 @@
           </span>
           <div class="menu-sub menu-sub-accordion">
             <div class="menu-item">
-              <a class="menu-link" href="index.html">
+              <a class="menu-link @if($subTitle == 'Member') active @endif" href="{{ route('competition.member') }}">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot"></span>
                 </span>
@@ -40,7 +40,7 @@
               </a>
             </div>
             <div class="menu-item">
-              <a class="menu-link" href="index.html">
+              <a class="menu-link @if($subTitle == 'Submission') active @endif" href="{{ route('competition.submission') }}">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot"></span>
                 </span>
@@ -48,24 +48,24 @@
               </a>
             </div>
             <div class="menu-item">
-              <a class="menu-link" href="index.html">
+              <a class="menu-link @if($subTitle == 'qualification') active @endif" href="{{ route('competition.qualification') }}">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot"></span>
                 </span>
-                <span class="menu-title">Qualification</span>
+                <span class="menu-title">Qualification Score</span>
               </a>
             </div>
             <div class="menu-item">
-              <a class="menu-link" href="dashboards/ecommerce.html">
+              <a class="menu-link @if($subTitle == 'Final') active @endif" href="{{ route('competition.final') }}">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot"></span>
                 </span>
-                <span class="menu-title">Final</span>
+                <span class="menu-title">Final Score</span>
               </a>
             </div>
           </div>
         </div>
-        <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
           <span class="menu-link">
             <span class="menu-icon">
               <i class="ki-outline ki-notepad-edit fs-2"></i>
@@ -75,7 +75,7 @@
           </span>
           <div class="menu-sub menu-sub-accordion">
             <div class="menu-item">
-              <a class="menu-link active" href="index.html">
+              <a class="menu-link" href="index.html">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot"></span>
                 </span>

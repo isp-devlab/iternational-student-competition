@@ -52,7 +52,6 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,'.$id,
         ]);
         if ($validator->fails()) {
-            dd($validator->errors());
             return redirect()->route('user')->with('error', 'Validation Error')->withInput()->withErrors($validator);
         }
 
